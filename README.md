@@ -15,3 +15,25 @@
 - 암호문: KHOOR
 ### 복호화 방법
 - 암호문을 키 값만큼 왼쪽으로 이동시키면 원래의 평문을 얻을 수 있음
+
+## 개발 순서
+### 1. 암호화 함수 생성
+```
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+def encrypt(plain_text, shift) :
+    cipher_text = ""
+    for i in plain_text :
+        position = alphabet.index(i) + shift
+        if position > 25 :
+            position = position % 26
+        cipher_text += alphabet[position]
+    print(f"The encoded text is {cipher_text}")
+    
+if direction == "encode" :
+    encrypt(text, shift)
+```
